@@ -1,0 +1,25 @@
+TARGETS = minissdpd rsyslog motd killprocs apache2 dbus gdomap speech-dispatcher exim4 atd anacron cron ssh acpid rsync network-manager bluetooth avahi-daemon saned cups-browsed gdm3 cups bootlogs single stop-bootlogd rmnologin rc.local
+INTERACTIVE = apache2
+apache2: rsyslog
+dbus: rsyslog
+gdomap: rsyslog
+speech-dispatcher: rsyslog
+exim4: rsyslog
+atd: rsyslog
+anacron: rsyslog
+cron: rsyslog
+ssh: rsyslog
+acpid: rsyslog
+rsync: rsyslog
+network-manager: dbus rsyslog
+bluetooth: rsyslog dbus
+avahi-daemon: dbus rsyslog
+saned: rsyslog dbus
+cups-browsed: rsyslog
+gdm3: dbus network-manager acpid
+cups: rsyslog
+bootlogs: gdm3
+single: killprocs motd bootlogs
+stop-bootlogd: minissdpd apache2 rsyslog network-manager dbus gdomap speech-dispatcher saned bluetooth exim4 avahi-daemon atd cups-browsed gdm3 motd cups bootlogs anacron cron ssh acpid rsync
+rmnologin: minissdpd apache2 rsyslog network-manager dbus gdomap speech-dispatcher saned bluetooth exim4 avahi-daemon atd cups-browsed gdm3 motd cups bootlogs anacron cron ssh acpid rsync
+rc.local: minissdpd apache2 rsyslog network-manager dbus gdomap speech-dispatcher saned bluetooth exim4 avahi-daemon atd cups-browsed gdm3 motd cups bootlogs anacron cron ssh acpid rsync

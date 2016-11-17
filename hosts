@@ -1,0 +1,13 @@
+127.0.0.1	localhost
+127.0.1.1       debian-pc
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+192.168.1.25   Domotic
+192.168.1.24   Labo
+192.168.1.33   PI3
+192.168.1.60    Diskstation
+192.168.1.37   Debian-pc
+

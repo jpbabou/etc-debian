@@ -1,0 +1,13 @@
+TARGETS = minissdpd apache2 gdomap speech-dispatcher exim4 atd network-manager bluetooth saned cups-browsed gdm3 cups urandom alsa-utils avahi-daemon sendsigs rsyslog umountnfs.sh rpcbind nfs-common hwclock.sh networking umountfs umountroot halt reboot
+avahi-daemon: saned cups-browsed
+sendsigs: minissdpd apache2 network-manager gdomap speech-dispatcher saned bluetooth exim4 avahi-daemon atd cups-browsed gdm3 alsa-utils
+rsyslog: apache2 network-manager gdomap speech-dispatcher sendsigs saned bluetooth exim4 avahi-daemon atd cups-browsed cups
+umountnfs.sh: minissdpd apache2 network-manager gdomap speech-dispatcher rsyslog sendsigs saned bluetooth exim4 avahi-daemon atd cups-browsed gdm3 alsa-utils
+rpcbind: umountnfs.sh
+nfs-common: umountnfs.sh
+hwclock.sh: minissdpd rsyslog nfs-common atd cups-browsed
+networking: minissdpd apache2 umountnfs.sh exim4 rpcbind cups-browsed
+umountfs: minissdpd urandom apache2 network-manager networking gdomap speech-dispatcher umountnfs.sh saned hwclock.sh bluetooth exim4 avahi-daemon atd rpcbind cups-browsed gdm3 alsa-utils
+umountroot: umountfs
+halt: umountroot
+reboot: umountroot
